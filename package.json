@@ -37,6 +37,7 @@
     "webpack-stream": "^3.1.0"
   },
   "dependencies": {
+    "dreamjs": "^0.1.5",
     "react": "^0.14.7",
     "react-dom": "^0.14.7"
   }

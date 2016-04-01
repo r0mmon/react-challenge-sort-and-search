@@ -23,3 +23,10 @@
   font-size: 2rem;
   color: #ccc;
 }
+tbody > tr:hover{
+  background: #eeeeee;
+  cursor: pointer;
+}
+table{
+  border: solid 1px #ddd;
+}
