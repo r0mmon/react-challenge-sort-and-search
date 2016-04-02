@@ -58,17 +58,17 @@ export default class App extends Component {
             if(prop.prop.term == true){
                 console.log('true');
                 dataObj.sort(function(a, b) {
-                    var textA = a.name.toUpperCase();
-                    var textB = b.name.toUpperCase();
-                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                    var nameA = a.name.toUpperCase();
+                    var nameB = b.name.toUpperCase();
+                    return (nameA < nameB) ? -1 : (nameA > nameB) ? 1 : 0;
                 });
             }
             else{
                 console.log('false');
                 dataObj.sort(function(a, b) {
-                    var textA = a.name.toUpperCase();
-                    var textB = b.name.toUpperCase();
-                    return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+                    var nameA = a.name.toUpperCase();
+                    var nameB = b.name.toUpperCase();
+                    return (nameA > nameB) ? -1 : (nameA < nameB) ? 1 : 0;
                 });
             }
         }
@@ -77,21 +77,22 @@ export default class App extends Component {
             if(prop.prop.term == true){
                 console.log('true');
                 dataObj.sort(function(a, b) {
-                    var textA = eval(a.age);
-                    var textB = eval(b.age);
-                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                    var ageA = eval(a.age);
+                    var ageB = eval(b.age);
+                    return (ageA < ageB) ? -1 : (ageA > ageB) ? 1 : 0;
                 });
             }
             else{
                 console.log('false');
                 dataObj.sort(function(a, b) {
-                    var textA = eval(a.age);
-                    var textB = eval(b.age);
-                    return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+                    var ageA = eval(a.age);
+                    var ageB = eval(b.age);
+                    return (ageA > ageB) ? -1 : (ageA < ageB) ? 1 : 0;
                 });
             }
         }
         this.setState({users: dataObj});
+        this.setState({activeUser: dataObj[0]});
     }
 
     render() {
