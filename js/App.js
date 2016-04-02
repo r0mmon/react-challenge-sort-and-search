@@ -38,7 +38,7 @@ export default class App extends Component {
     }
 
     changeList(prop) {
-        var term = prop['term'].toLowerCase(),
+        var term = prop['prop'].toLowerCase(),
             users = this.state.Searchusers,
             newList = [];
 
@@ -52,7 +52,46 @@ export default class App extends Component {
     }
 
     sortList(prop) {
-        console.log('aa - ', prop);
+        var dataObj = this.state.users;
+        // sort by name
+        if(prop.prop.type == 'nameASC'){
+            if(prop.prop.term == true){
+                console.log('true');
+                dataObj.sort(function(a, b) {
+                    var textA = a.name.toUpperCase();
+                    var textB = b.name.toUpperCase();
+                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                });
+            }
+            else{
+                console.log('false');
+                dataObj.sort(function(a, b) {
+                    var textA = a.name.toUpperCase();
+                    var textB = b.name.toUpperCase();
+                    return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+                });
+            }
+        }
+        else{
+            // sort by age
+            if(prop.prop.term == true){
+                console.log('true');
+                dataObj.sort(function(a, b) {
+                    var textA = eval(a.age);
+                    var textB = eval(b.age);
+                    return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
+                });
+            }
+            else{
+                console.log('false');
+                dataObj.sort(function(a, b) {
+                    var textA = eval(a.age);
+                    var textB = eval(b.age);
+                    return (textA > textB) ? -1 : (textA < textB) ? 1 : 0;
+                });
+            }
+        }
+        this.setState({users: dataObj});
     }
 
     render() {

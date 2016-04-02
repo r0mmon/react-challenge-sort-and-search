@@ -12,7 +12,7 @@ class SortByButtons extends Component {
         };
     }
 
-    onInputChange(type, term) {
+    changeOrder(type, term) {
         (type == 'nameASC') ?  this.setState({nameASC: term}) :  this.setState({ageASC: term});
         this.props.sortList({type, term});
     }
@@ -20,11 +20,11 @@ class SortByButtons extends Component {
     render() {
         return (
             <div className="toolbar form-group">
-                <button className="btn btn-default" onClick={()=>this.onInputChange('nameASC', !this.state.nameASC)}>
+                <button className="btn btn-default" onClick={()=>this.changeOrder('nameASC', !this.state.nameASC)}>
                     <i className="icon fa fa-sort-alpha-asc"></i>
                     <span>Sort by name</span>
                 </button>
-                <button className="btn btn-default" onClick={()=>this.onInputChange('ageASC', !this.state.ageASC)}>
+                <button className="btn btn-default" onClick={()=>this.changeOrder('ageASC', !this.state.ageASC)}>
                     <i className="icon fa fa-sort-numeric-desc"></i>
                     <span>Sort by age</span>
                 </button>
