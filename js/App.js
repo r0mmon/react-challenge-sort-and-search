@@ -16,7 +16,7 @@ export default class App extends Component {
             activeUser: {}
         };
     }
-    
+
     componentDidMount() {
         //get json data from the generated file
         $.ajax({

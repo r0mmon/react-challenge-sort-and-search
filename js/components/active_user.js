@@ -9,6 +9,11 @@ const ActiveUser = (props) => {
             <h3>Nothing found :(</h3>
         );
     }
+    if(props.activeUser.image == undefined){
+        return (
+            <h3>Loading ...</h3>
+        );
+    }
     else {
         const imgUrl = `images/${props.activeUser.image}.svg`;
         return (
