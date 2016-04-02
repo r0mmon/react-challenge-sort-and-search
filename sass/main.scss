@@ -24,15 +24,16 @@
   color: #ccc;
 }
 
-.table-striped {
-  border: solid 1px #ddd;
-  tbody > tr:hover {
-    background: #eeeeee;
-    cursor: pointer;
+.table-striped {border: solid 1px #ddd;
+  tbody > tr { transition: all .5s;
+    &:hover {
+      background: #eeeeee;
+      cursor: pointer;
+    }
   }
 }
 
-.toolbar .btn {
-  margin-right: 1rem;
-}
+  .toolbar .btn {
+    margin-right: 1rem;
+  }
 

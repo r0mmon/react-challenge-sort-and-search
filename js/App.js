@@ -49,6 +49,10 @@ export default class App extends Component {
             }
         }
         this.setState({users: newList});
+        if(newList == [])
+            this.setState({activeUser: {}});
+        else
+            this.setState({activeUser: newList[0]});
     }
 
     sortList(prop) {
@@ -56,7 +60,6 @@ export default class App extends Component {
         // sort by name
         if(prop.prop.type == 'nameASC'){
             if(prop.prop.term == true){
-                console.log('true');
                 dataObj.sort(function(a, b) {
                     var nameA = a.name.toUpperCase();
                     var nameB = b.name.toUpperCase();
@@ -64,7 +67,6 @@ export default class App extends Component {
                 });
             }
             else{
-                console.log('false');
                 dataObj.sort(function(a, b) {
                     var nameA = a.name.toUpperCase();
                     var nameB = b.name.toUpperCase();
@@ -75,7 +77,6 @@ export default class App extends Component {
         else{
             // sort by age
             if(prop.prop.term == true){
-                console.log('true');
                 dataObj.sort(function(a, b) {
                     var ageA = eval(a.age);
                     var ageB = eval(b.age);
@@ -83,7 +84,6 @@ export default class App extends Component {
                 });
             }
             else{
-                console.log('false');
                 dataObj.sort(function(a, b) {
                     var ageA = eval(a.age);
                     var ageB = eval(b.age);

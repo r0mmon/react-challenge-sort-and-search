@@ -4,14 +4,20 @@
 import React from 'react';
 
 const ActiveUser = (props) => {
-    const imgUrl = `../images/${props.activeUser.image}.svg`;
-    return (
-        <div className="thumbnail text-center">
-            <img src={imgUrl} />
-            <div className="thumbnail-caption">
-                <h3>{props.activeUser.name}</h3>
-                <table className="user-info table table-responsive">
-                    <tbody>
+    if(props.activeUser == undefined){
+        return (
+            <h3>Nothing found :(</h3>
+        );
+    }
+    else {
+        const imgUrl = `../images/${props.activeUser.image}.svg`;
+        return (
+            <div className="thumbnail text-center">
+                <img src={imgUrl}/>
+                <div className="thumbnail-caption">
+                    <h3>{props.activeUser.name}</h3>
+                    <table className="user-info table table-responsive">
+                        <tbody>
                         <tr>
                             <td>Age:</td>
                             <td>{props.activeUser.age}</td>
@@ -24,15 +30,16 @@ const ActiveUser = (props) => {
                             <td>phone:</td>
                             <td>{props.activeUser.phone}</td>
                         </tr>
-                    </tbody>
-                </table>
-                <div>
-                    <b>Favorite phrase:</b>
-                    <div>{props.activeUser.phrase}</div>
+                        </tbody>
+                    </table>
+                    <div>
+                        <b>Favorite phrase:</b>
+                        <div>{props.activeUser.phrase}</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 };
 
 export default ActiveUser;
