@@ -23,10 +23,16 @@
   font-size: 2rem;
   color: #ccc;
 }
-tbody > tr:hover{
-  background: #eeeeee;
-  cursor: pointer;
-}
-table{
+
+.table-striped {
   border: solid 1px #ddd;
+  tbody > tr:hover {
+    background: #eeeeee;
+    cursor: pointer;
+  }
 }
+
+.toolbar .btn {
+  margin-right: 1rem;
+}
+

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import UserList from './components/user_list';
 import ActiveUser from './components/active_user';
+import SearchInput from './components/search_input';
+import SortByButtons from './components/sort_buttons';
 
 import $ from 'jquery';
 
@@ -10,6 +12,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             users: [],
+            Searchusers: [], //not sure abt this shit
             activeUser: {}
         };
     }
@@ -21,8 +24,12 @@ export default class App extends Component {
             dataType: 'json',
             cache: false,
             success: function (users) {
+                // random number for random active user
+                var max = users.length,
+                    rand = Math.floor(Math.random() * max);
                 this.setState({users});
-                this.setState({activeUser: users[0]});
+                this.setState({Searchusers: users});
+                this.setState({activeUser: users[rand]});
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(status, err.toString());
@@ -30,17 +37,42 @@ export default class App extends Component {
         });
     }
 
+    changeList(term) {
+        term = term['term'].toLowerCase();
+        var users = this.state.Searchusers;
+        if(term == ''){
+            console.log('aaaaaaaaaaa', users);
+            this.setState({users});
+        }
+        var newList = [];
+        for (var i = 0; i < users.length; i++) {
+            if (users[i]['name'].toLowerCase().indexOf(term) > -1) {
+                //push data into results array
+                newList.push(users[i]);
+            }
+        }
+        this.setState({users: newList});
+    }
+
     render() {
         return (
-            <div className="container app">
+            <div className="app container-fluid">
+                <div className="row">
+                    <div className="col-sm-12">
+                        <SearchInput onSearchTermChange={term => this.changeList({term})}/>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-sm-12">
+                        <SortByButtons users={this.state.users}/>
+                    </div>
+                </div>
                 <div className="row">
                     <div className="col-sm-4 col-md-3 col-lg-2">
-                        <div className="thumbnail">
-                            <ActiveUser activeUser={this.state.activeUser} users={this.state.users} />
-                        </div>
+                        <ActiveUser activeUser={this.state.activeUser}/>
                     </div>
                     <div className="col-sm-8 col-md-9 col-lg-10">
-                        <UserList users={this.state.users} selectUser={activeUser => this.setState({activeUser})} />
+                        <UserList users={this.state.users} selectUser={activeUser => this.setState({activeUser})}/>
                     </div>
                 </div>
             </div>
