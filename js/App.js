@@ -20,7 +20,7 @@ export default class App extends Component {
     componentDidMount() {
         //get json data from the generated file
         $.ajax({
-            url: '../data.json',
+            url: '/data.json',
             dataType: 'json',
             cache: false,
             success: function (users) {
