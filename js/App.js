@@ -12,7 +12,7 @@ export default class App extends Component {
         super(props);
         this.state = {
             users: [],
-            Searchusers: [], //not sure abt this shit
+            Searchusers: [], //not sure about this shit
             activeUser: {}
         };
     }
@@ -37,14 +37,11 @@ export default class App extends Component {
         });
     }
 
-    changeList(term) {
-        term = term['term'].toLowerCase();
-        var users = this.state.Searchusers;
-        if(term == ''){
-            console.log('aaaaaaaaaaa', users);
-            this.setState({users});
-        }
-        var newList = [];
+    changeList(prop) {
+        var term = prop['term'].toLowerCase(),
+            users = this.state.Searchusers,
+            newList = [];
+
         for (var i = 0; i < users.length; i++) {
             if (users[i]['name'].toLowerCase().indexOf(term) > -1) {
                 //push data into results array
@@ -54,17 +51,21 @@ export default class App extends Component {
         this.setState({users: newList});
     }
 
+    sortList(prop) {
+        console.log('aa - ', prop);
+    }
+
     render() {
         return (
             <div className="app container-fluid">
                 <div className="row">
                     <div className="col-sm-12">
-                        <SearchInput onSearchTermChange={term => this.changeList({term})}/>
+                        <SearchInput onSearchTermChange={prop => this.changeList({prop})}/>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-sm-12">
-                        <SortByButtons users={this.state.users}/>
+                        <SortByButtons sortList={prop => this.sortList({prop})}/>
                     </div>
                 </div>
                 <div className="row">
