@@ -16,7 +16,7 @@ export default class App extends Component {
             activeUser: {}
         };
     }
-
+    
     componentDidMount() {
         //get json data from the generated file
         $.ajax({
@@ -37,7 +37,6 @@ export default class App extends Component {
         });
     }
 
-    
     changeList(prop) {
         var term = prop['prop'].toLowerCase(),
             users = this.state.Searchusers,

@@ -10,7 +10,7 @@ const ActiveUser = (props) => {
         );
     }
     else {
-        const imgUrl = `../images/${props.activeUser.image}.svg`;
+        const imgUrl = `images/${props.activeUser.image}.svg`;
         return (
             <div className="thumbnail text-center">
                 <img src={imgUrl}/>
