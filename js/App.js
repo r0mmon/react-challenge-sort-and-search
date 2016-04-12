@@ -109,10 +109,10 @@ export default class App extends Component {
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-sm-4 col-md-3 col-lg-2">
+                    <div className="col-sm-4 col-md-3 col-lg-3">
                         <ActiveUser activeUser={this.state.activeUser}/>
                     </div>
-                    <div className="col-sm-8 col-md-9 col-lg-10">
+                    <div className="col-sm-8 col-md-9 col-lg-9">
                         <UserList users={this.state.users} selectUser={activeUser => this.setState({activeUser})}/>
                     </div>
                 </div>
@@ -120,4 +120,3 @@ export default class App extends Component {
         );
     }
 }
-
